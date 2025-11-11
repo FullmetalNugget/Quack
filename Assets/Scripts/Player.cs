@@ -4,18 +4,19 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float walkSpeed = 10f;
-    public float runSpeed = 15f;
+    public float runSpeed = 25f;
     public float jumpForce = 7f;
     public float slideSpeed = 14f;
     public float slideDuration = 0.5f;
 
     [Header("QUake movement params")]
     public float accelSpeed = 4.0f;
-    public float maxSpeed = 10.0f;
     public float maxAirSpeed = 5.0f;
 
     public float friction = 2.0f;
     public float airControl = 0.2f;
+    public float flipStrength = -0.7f;
+    public bool infitineDouble = false;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -36,13 +37,14 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezePositionZ;
+
     }
 
     void sv_accelerate(Rigidbody rb, Vector3 wishDir, float wishSpeed, float accelerate) {
       Vector3 velocity = rb.linearVelocity;  // get current velocity
 
       // Project current velocity onto desired direction
-      float currentSpeed = Vector3.Dot(velocity, wishDir);
+      float currentSpeed = Vector3.Dot(new Vector3(velocity.y, 0.0f, 0.0f), wishDir);
 
       // How much speed we need to add
       float addSpeed = wishSpeed - currentSpeed;
@@ -72,11 +74,22 @@ public class Player : MonoBehaviour
       rb.linearVelocity = vel * (newSpeed / speed);
     }
 
+    bool checkDirection(Rigidbody rb, Vector3 wishDir) {
+
+      float currentVel = rb.linearVelocity.x;
+
+      if(Mathf.Approximately(currentVel, 0f) || Mathf.Approximately(wishDir.x, 0f)) {
+        return false;
+      }
+
+      return Mathf.Sign(wishDir.x) != Mathf.Sign(currentVel);
+    }
+
     void Update()
     {
         CheckGrounded();
 
-        Vector3 wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        Vector3 wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         bool isGrounded = CheckGrounded();
        
@@ -93,20 +106,24 @@ public class Player : MonoBehaviour
                 Jump();
                 canDoubleJump = true;
             }
-            else if (canDoubleJump)
+            else if (canDoubleJump || infitineDouble)
             {
+                if(checkDirection(rb, wishDir)) {
+                  rb.linearVelocity = new Vector3(rb.linearVelocity.x * flipStrength/Mathf.Abs(rb.linearVelocity.x), 0.0f, 0.0f);
+                }
                 Jump();
+                
                 canDoubleJump = false;
             }
         }
 
         if (isGrounded) {
-          if (!Input.GetKeyDown(KeyCode.LeftControl)) {ApplyFriction(rb, friction);}
-          sv_accelerate(rb, wishDir, maxSpeed, accelSpeed);
+          if (!Input.GetKey(KeyCode.LeftControl)) {ApplyFriction(rb, friction);}
+          sv_accelerate(rb, wishDir, walkSpeed, accelSpeed);
         }
         else {
            
-          sv_accelerate(rb, wishDir, maxAIrSpeed, accelSpeed * airControl);
+          sv_accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)

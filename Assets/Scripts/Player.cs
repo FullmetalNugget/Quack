@@ -3,11 +3,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
-    public float walkSpeed = 6f;
-    public float runSpeed = 10f;
+    public float walkSpeed = 10f;
+    public float runSpeed = 15f;
     public float jumpForce = 7f;
     public float slideSpeed = 14f;
     public float slideDuration = 0.5f;
+
+    [Header("QUake movement params")]
+    public float accelSpeed = 4.0f;
+    public float maxSpeed = 10.0f;
+    public float maxAirSpeed = 5.0f;
+
+    public float friction = 2.0f;
+    public float airControl = 0.2f;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -19,6 +27,7 @@ public class Player : MonoBehaviour
     private bool canDoubleJump;
     private bool isSliding;
     private float slideTimer;
+    private float accel;
 
     void Start()
     {
@@ -29,18 +38,52 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezePositionZ;
     }
 
+    void sv_accelerate(Rigidbody rb, Vector3 wishDir, float wishSpeed, float accelerate) {
+      Vector3 velocity = rb.linearVelocity;  // get current velocity
+
+      // Project current velocity onto desired direction
+      float currentSpeed = Vector3.Dot(velocity, wishDir);
+
+      // How much speed we need to add
+      float addSpeed = wishSpeed - currentSpeed;
+      if (addSpeed <= 0)
+          return;
+
+      // Determine acceleration this frame
+      float accelSpeed = accelerate * Time.deltaTime * wishSpeed;
+      if (accelSpeed > addSpeed)
+          accelSpeed = addSpeed;
+
+      // Apply acceleration in the desired direction
+      velocity += accelSpeed * wishDir;
+
+      rb.linearVelocity = velocity; // write it back to the Rigidbody
+    }
+    void ApplyFriction(Rigidbody rb, float friction)
+    {
+      Vector3 vel = rb.linearVelocity;
+      float speed = vel.magnitude;
+
+      if (speed < 0.001f) return; // already almost stopped
+
+      float drop = speed * friction * Time.fixedDeltaTime;
+      float newSpeed = Mathf.Max(speed - drop, 0);
+
+      rb.linearVelocity = vel * (newSpeed / speed);
+    }
+
     void Update()
     {
         CheckGrounded();
 
-        float moveInput = Input.GetAxisRaw("Horizontal");
+        Vector3 wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float currentSpeed = isRunning ? runSpeed : walkSpeed;
-
+        bool isGrounded = CheckGrounded();
+       
         if (!isSliding)
         {
-            Vector3 move = new Vector3(moveInput * currentSpeed, rb.linearVelocity.y, 0f);
-            rb.linearVelocity = move;
+
+
         }
 
         if (Input.GetButtonDown("Jump"))
@@ -57,41 +100,30 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded && Mathf.Abs(moveInput) > 0.1f)
-        {
-            StartSlide(moveInput);
+        if (isGrounded) {
+          if (!Input.GetKeyDown(KeyCode.LeftControl)) {ApplyFriction(rb, friction);}
+          sv_accelerate(rb, wishDir, maxSpeed, accelSpeed);
+        }
+        else {
+           
+          sv_accelerate(rb, wishDir, maxAIrSpeed, accelSpeed * airControl);
         }
 
-        if (isSliding)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)
         {
-            slideTimer -= Time.deltaTime;
-            if (slideTimer <= 0)
-                StopSlide();
+            //StartSlide(moveInput);
         }
+
     }
 
-    void CheckGrounded()
+    bool CheckGrounded()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
-        if (isGrounded && rb.linearVelocity.y <= 0)
-            canDoubleJump = true;
+        return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     void Jump()
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, 0f);
-    }
-
-    void StartSlide(float moveInput)
-    {
-        isSliding = true;
-        slideTimer = slideDuration;
-        rb.linearVelocity = new Vector3(moveInput * slideSpeed, 0f, 0f);
-    }
-
-    void StopSlide()
-    {
-        isSliding = false;
     }
 
     void OnDrawGizmosSelected()

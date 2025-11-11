@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         }
         else {
            
-          sv_accelerate(rb, wishDir, maxAIrSpeed, accelSpeed * airControl);
+          sv_accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)

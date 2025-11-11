@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezeRotationX |
+                         RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezePositionZ;
     }
 

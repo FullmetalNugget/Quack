@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class Button : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void LoadScene(string Quack)
     {
-        
+        SceneManager.LoadScene(Quack);
     }
 }

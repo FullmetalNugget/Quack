@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 1230008390}
   - component: {fileID: 1230008389}
   - component: {fileID: 1230008393}
+  - component: {fileID: 1230008394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -690,6 +691,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1230008394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230008388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ecb1aa585ee7648abf21b70a070172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  moveSpeed: 6
+  jumpForce: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheck: {fileID: 1230008392}
+  groundCheckRadius: 0.2
 --- !u!1 &1541519225
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +722,7 @@ GameObject:
   - component: {fileID: 1541519228}
   - component: {fileID: 1541519227}
   - component: {fileID: 1541519226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

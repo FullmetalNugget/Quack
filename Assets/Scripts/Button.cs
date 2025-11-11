@@ -14,4 +14,9 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene(Quack);
     }
+
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
+    }
 }

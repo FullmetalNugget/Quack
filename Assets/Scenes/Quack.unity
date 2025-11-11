@@ -1907,11 +1907,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ecb1aa585ee7648abf21b70a070172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  walkSpeed: 6
-  runSpeed: 10
-  jumpForce: 7
-  slideSpeed: 14
+  walkSpeed: 10
+  runSpeed: 20
+  jumpForce: 9
+  slideSpeed: 15
   slideDuration: 0.5
+  accelSpeed: 8
+  maxSpeed: 20
+  maxAirSpeed: 5
+  friction: 2
+  airControl: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

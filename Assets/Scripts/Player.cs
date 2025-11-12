@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         
         if (isGrounded) {
           if (!isSliding) {ApplyFriction(rb, friction);}
-          sv_accelerate(rb, wishDir, walkSpeed, accelSpeed);
+          sv_accelerate(rb, wishDir, isRunning ? runSpeed : walkSpeed, accelSpeed);
         }
         else {
            

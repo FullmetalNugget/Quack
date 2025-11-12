@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float jumpForce = 7f;
     public float slideSpeed = 14f;
     public float slideDuration = 0.5f;
+    public float slideCooldown = 1.0f;
 
     [Header("QUake movement params")]
     public float accelSpeed = 4.0f;
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
       Vector3 velocity = rb.linearVelocity;  // get current velocity
 
       // Project current velocity onto desired direction
-      float currentSpeed = Vector3.Dot(new Vector3(velocity.y, 0.0f, 0.0f), wishDir);
+      float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0.0f, 0.0f), wishDir);
 
       // How much speed we need to add
       float addSpeed = wishSpeed - currentSpeed;
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        float curTime = Time.time;
         CheckGrounded();
 
         Vector3 wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
@@ -95,7 +97,17 @@ public class Player : MonoBehaviour
        
         if (!isSliding)
         {
+          if (Input.GetKeyDown(KeyCode.LeftControl) && (curTime - slideTimer > slideCooldown)) {
+            isSliding = true;
+            slideTimer = curTime;
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0.0f, 0.0f);
 
+          }
+
+
+        }
+        else if(curTime- slideTimer > slideDuration) {
+          isSliding = false;
 
         }
 
@@ -116,19 +128,14 @@ public class Player : MonoBehaviour
                 canDoubleJump = false;
             }
         }
-
+        
         if (isGrounded) {
-          if (!Input.GetKey(KeyCode.LeftControl)) {ApplyFriction(rb, friction);}
+          if (!isSliding) {ApplyFriction(rb, friction);}
           sv_accelerate(rb, wishDir, walkSpeed, accelSpeed);
         }
         else {
            
           sv_accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl) && isGrounded)
-        {
-            //StartSlide(moveInput);
         }
 
     }

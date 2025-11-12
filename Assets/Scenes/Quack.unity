@@ -2900,18 +2900,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ecb1aa585ee7648abf21b70a070172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  walkSpeed: 10
-  runSpeed: 20
-  jumpForce: 9
+  walkSpeed: 5
+  runSpeed: 10
+  jumpForce: 7
   slideSpeed: 15
   slideDuration: 0.5
   slideCooldown: 1
   accelSpeed: 8
   maxAirSpeed: 2
-  friction: 2
-  airControl: 0.5
-  flipStrength: -0.7
-  infitineDouble: 0
+  friction: 1
+  airControl: 1
+  flipStrength: -3
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2964,7 +2963,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1023316265
@@ -5181,7 +5180,7 @@ Transform:
   m_GameObject: {fileID: 1546076621}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.51, y: 0, z: 0}
   m_LocalScale: {x: 5.921062, y: 19.094923, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5325,7 +5324,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609674461}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -2.0694594}
+  m_LocalPosition: {x: 0, y: 0, z: -2.07}
   m_LocalScale: {x: 0.05147408, y: 0.051474094, z: 0.05147408}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5334,7 +5333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.0940671, y: 1.5840766}
+  m_AnchoredPosition: {x: 5.4, y: 1.5840766}
   m_SizeDelta: {x: 1101, y: 658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609674463

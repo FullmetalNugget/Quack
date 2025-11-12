@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     [Header("Movement")]
@@ -10,14 +11,12 @@ public class Player : MonoBehaviour
     public float slideDuration = 0.5f;
     public float slideCooldown = 1.0f;
 
-    [Header("QUake movement params")]
-    public float accelSpeed = 4.0f;
-    public float maxAirSpeed = 5.0f;
-
-    public float friction = 2.0f;
+    [Header("Quake Movement")]
+    public float accelSpeed = 4f;
+    public float maxAirSpeed = 5f;
+    public float friction = 2f;
     public float airControl = 0.2f;
     public float flipStrength = -0.7f;
-    public bool infitineDouble = false;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -26,131 +25,145 @@ public class Player : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded;
-    private bool canDoubleJump;
     private bool isSliding;
     private float slideTimer;
-    private float accel;
+    private bool canDoubleJump;
 
-    void Start()
+    private Vector3 wishDir;
+    private bool isRunning;
+    private bool jumpPressed;
+    private bool slidePressed;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationZ |
-                         RigidbodyConstraints.FreezeRotationX |
+        rb.constraints = RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationY |
+                         RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionZ;
-
     }
 
-    void sv_accelerate(Rigidbody rb, Vector3 wishDir, float wishSpeed, float accelerate) {
-      Vector3 velocity = rb.linearVelocity;  // get current velocity
-
-      // Project current velocity onto desired direction
-      float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0.0f, 0.0f), wishDir);
-
-      // How much speed we need to add
-      float addSpeed = wishSpeed - currentSpeed;
-      if (addSpeed <= 0)
-          return;
-
-      // Determine acceleration this frame
-      float accelSpeed = accelerate * Time.deltaTime * wishSpeed;
-      if (accelSpeed > addSpeed)
-          accelSpeed = addSpeed;
-
-      // Apply acceleration in the desired direction
-      velocity += accelSpeed * wishDir;
-
-      rb.linearVelocity = velocity; // write it back to the Rigidbody
-    }
-    void ApplyFriction(Rigidbody rb, float friction)
+    private void Update()
     {
-      Vector3 vel = rb.linearVelocity;
-      float speed = vel.magnitude;
-
-      if (speed < 0.001f) return; // already almost stopped
-
-      float drop = speed * friction * Time.fixedDeltaTime;
-      float newSpeed = Mathf.Max(speed - drop, 0);
-
-      rb.linearVelocity = vel * (newSpeed / speed);
-    }
-
-    bool checkDirection(Rigidbody rb, Vector3 wishDir) {
-
-      float currentVel = rb.linearVelocity.x;
-
-      if(Mathf.Approximately(currentVel, 0f) || Mathf.Approximately(wishDir.x, 0f)) {
-        return false;
-      }
-
-      return Mathf.Sign(wishDir.x) != Mathf.Sign(currentVel);
-    }
-
-    void Update()
-    {
-        float curTime = Time.time;
-        CheckGrounded();
-
-        Vector3 wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        bool isGrounded = CheckGrounded();
-       
-        if (!isSliding)
-        {
-          if (Input.GetKeyDown(KeyCode.LeftControl) && (curTime - slideTimer > slideCooldown)) {
-            isSliding = true;
-            slideTimer = curTime;
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0.0f, 0.0f);
-
-          }
-
-
-        }
-        else if(curTime- slideTimer > slideDuration) {
-          isSliding = false;
-
-        }
+        // Capture input
+        wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
+        isRunning = Input.GetKey(KeyCode.LeftShift);
 
         if (Input.GetButtonDown("Jump"))
-        {
-            if (isGrounded)
-            {
-                Jump();
-                canDoubleJump = true;
-            }
-            else if (canDoubleJump || infitineDouble)
-            {
-                if(checkDirection(rb, wishDir)) {
-                  rb.linearVelocity = new Vector3(rb.linearVelocity.x * flipStrength/Mathf.Abs(rb.linearVelocity.x), 0.0f, 0.0f);
-                }
-                Jump();
-                
-                canDoubleJump = false;
-            }
-        }
-        
-        if (isGrounded) {
-          if (!isSliding) {ApplyFriction(rb, friction);}
-          sv_accelerate(rb, wishDir, isRunning ? runSpeed : walkSpeed, accelSpeed);
-        }
-        else {
-           
-          sv_accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
-        }
+            jumpPressed = true;
 
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+            slidePressed = true;
     }
 
-    bool CheckGrounded()
+    private void FixedUpdate()
+    {
+        float curTime = Time.time;
+        isGrounded = CheckGrounded();
+
+        // Reset double jump if grounded
+        if (isGrounded)
+            canDoubleJump = true;
+
+        HandleSliding(curTime);
+
+        if (isGrounded)
+        {
+            if (!isSliding)
+                ApplyFriction(rb, friction);
+
+            Accelerate(rb, wishDir, isRunning ? runSpeed : walkSpeed, accelSpeed);
+        }
+        else
+        {
+            Accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
+        }
+
+        HandleJump();
+    }
+
+    private void HandleSliding(float curTime)
+    {
+        if (!isSliding)
+        {
+            if (slidePressed && curTime - slideTimer > slideCooldown)
+            {
+                StartSlide(curTime);
+            }
+        }
+        else if (curTime - slideTimer > slideDuration)
+        {
+            isSliding = false;
+        }
+
+        slidePressed = false; // reset input
+    }
+
+    private void StartSlide(float curTime)
+    {
+        isSliding = true;
+        slideTimer = curTime;
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
+    }
+
+    private void Accelerate(Rigidbody rb, Vector3 wishDir, float wishSpeed, float accelerate)
+    {
+        Vector3 velocity = rb.linearVelocity;
+
+        // Project current velocity along desired direction
+        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0, 0), wishDir);
+        float addSpeed = Mathf.Max(wishSpeed - currentSpeed, 0);
+
+        if (addSpeed <= 0)
+            return;
+
+        float accelThisFrame = Mathf.Min(accelerate * Time.fixedDeltaTime * wishSpeed, addSpeed);
+        velocity += accelThisFrame * wishDir;
+
+        rb.linearVelocity = velocity;
+    }
+
+    private void ApplyFriction(Rigidbody rb, float friction)
+    {
+        Vector3 velocity = rb.linearVelocity;
+        float speed = velocity.magnitude;
+
+        if (speed < 0.001f) return;
+
+        float drop = speed * friction * Time.fixedDeltaTime;
+        rb.linearVelocity = velocity * Mathf.Max((speed - drop) / speed, 0f);
+    }
+
+    private void HandleJump()
+    {
+        if (!jumpPressed) return;
+
+        if (isGrounded)
+        {
+            Jump();
+        }
+        else if (canDoubleJump)
+        {
+            Jump();
+            canDoubleJump = false;
+        }
+
+        jumpPressed = false;
+    }
+
+    private void Jump()
+    {
+        Vector3 velocity = rb.linearVelocity;
+        velocity.y = jumpForce;
+        rb.linearVelocity = velocity;
+    }
+
+    private bool CheckGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    void Jump()
-    {
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, 0f);
-    }
-
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
         {

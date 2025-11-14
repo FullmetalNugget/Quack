@@ -1,0 +1,30 @@
+Quack
+
+Quack on 3d side scroller, jossa päähahmona toimii hanhi. Pelin movement on aivan kauhea. Se yrittää mimikoida Quake-movementtia, mutta epäonnistuu siinä mukavasti.
+Pelissä pitää hyppiä alustasta toiselle, niinkuin jokaisessa platformer pelissä.
+
+
+
+
+Tarina
+Hanhen leipä lempi leipäpala on pöllitty, ja hän yrittää saada sen takaisin.
+
+
+
+
+
+
+Pelaaja voi
+* juosta
+* hyppätä
+* syöksyä
+* tuplahypätä
+
+
+
+USP
+* Paska movement
+* Erikoiset hahmot
+* Mappi kertoo tarinan
+
+

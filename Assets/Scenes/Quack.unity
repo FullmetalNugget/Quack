@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 55236930}
   - component: {fileID: 55236929}
   - component: {fileID: 55236928}
+  - component: {fileID: 55236932}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -426,7 +427,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55236927}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!4 &55236931
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +443,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &55236932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55236927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Trap
 --- !u!1001 &78953860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1471,6 +1484,7 @@ GameObject:
   - component: {fileID: 320415697}
   - component: {fileID: 320415696}
   - component: {fileID: 320415695}
+  - component: {fileID: 320415699}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -1554,7 +1568,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320415694}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!4 &320415698
 Transform:
   m_ObjectHideFlags: 0
@@ -1570,6 +1584,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320415699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320415694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Trap
 --- !u!1001 &337232433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10379,6 +10405,7 @@ GameObject:
   - component: {fileID: 2031576625}
   - component: {fileID: 2031576624}
   - component: {fileID: 2031576623}
+  - component: {fileID: 2031576627}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -10462,7 +10489,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031576622}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!4 &2031576626
 Transform:
   m_ObjectHideFlags: 0
@@ -10478,6 +10505,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031576627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031576622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Trap
 --- !u!1001 &2036798641
 PrefabInstance:
   m_ObjectHideFlags: 0

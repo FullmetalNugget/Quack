@@ -1,15 +1,15 @@
 Quack
 
-Quack on 3d side scroller, jossa päähahmona toimii hanhi. Pelin movement on aivan kauhea. Se yrittää mimikoida Quake-movementtia, mutta epäonnistuu siinä mukavasti.
-Pelissä pitää hyppiä alustasta toiselle, niinkuin jokaisessa platformer pelissä.
-
+Quack on 3d side scroller, jossa päähahmona on Goswyn the Goose. Tämä peli yrittää imitoida Quake ja Doom liikkumista, mutta vain X - Y lukolla. 
+Liikkuminen ei toimi niin kuin Quake tai Doom, koska emme osaa tehdä tällaisia asioita.
+Pelissä on ainakin 3 eri tasoa, jotka kertovat tarinaa hahmosta.
 
 
 
 Tarina
-Hanhen leipä lempi leipäpala on pöllitty, ja hän yrittää saada sen takaisin.
-
-
+Pelaaja on leiponut herkullisen leivän, mutta jokin olio on varastanut sen.
+Goswyn haluaa saada leipänsä takaisin ja syödä sen.
+Pelaaja matkaa linnan läpi, jossa on paljon vihollisia, linnan lopusta löytyy kuoppa josta pelaaja pääsee kaivoksiin, mutta mitä kaivoksien lopusta löytyy
 
 
 
@@ -28,3 +28,7 @@ USP
 * Mappi kertoo tarinan
 
 
+Samanlaisia pelejä
+* Mario
+* ???
+* ???

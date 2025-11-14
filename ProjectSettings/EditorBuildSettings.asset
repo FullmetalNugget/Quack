@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 03d89a91a9199d15385239d76b838cbe
+  - enabled: 1
     path: Assets/Scenes/Quack.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Mine.unity
+    guid: 0fbaf1e4dee17b94ba809d1352e05290
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 59835b97178f0784c8e9688327f78c50, type: 2}

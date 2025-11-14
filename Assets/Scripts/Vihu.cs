@@ -35,15 +35,15 @@ public class Vihu : MonoBehaviour
         switch (type)
         {
             case VihuTyyppi.Rekka:
-                HandleRekka();
+                //HandleRekka();
                 break;
 
             case VihuTyyppi.Varis:
-                HandleVaris();
+                //HandleVaris();
                 break;
 
             case VihuTyyppi.Ansa:
-                HandleAnsa();
+                //HandleAnsa();
                 break;
         }
     }

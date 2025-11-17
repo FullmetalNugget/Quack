@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public float maxAirSpeed = 5f;
     public float friction = 2f;
     public float airControl = 0.2f;
-    public float flipStrength = -0.7f;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -33,6 +32,8 @@ public class Player : MonoBehaviour
     private bool isRunning;
     private bool jumpPressed;
     private bool slidePressed;
+    private Animator anim;
+
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionZ;
+        anim = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
     }
 
     private void Update()
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
             slidePressed = true;
+
+        animController();
     }
 
     private void FixedUpdate()
@@ -170,5 +174,10 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+    }
+
+    private void animController() {
+      //anim.SetBool("isMoving", )
+      anim.SetFloat("Speed", rb.linearVelocity.x);
     }
 }

@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     private bool slidePressed;
     private Animator anim;
 
+    [Header("Animations")]
+    private AnimationClip idk;
+
 
     private void Start()
     {
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
             slidePressed = true;
 
         animController();
+        RotateCharacter();
     }
 
     private void FixedUpdate()
@@ -93,6 +97,7 @@ public class Player : MonoBehaviour
             if (slidePressed && curTime - slideTimer > slideCooldown)
             {
                 StartSlide(curTime);
+                anim.Play("Slide");
             }
         }
         else if (curTime - slideTimer > slideDuration)
@@ -145,10 +150,12 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             Jump();
+            anim.Play("Jump");
         }
         else if (canDoubleJump)
         {
             Jump();
+            anim.Play("Jump");
             canDoubleJump = false;
         }
 
@@ -167,6 +174,17 @@ public class Player : MonoBehaviour
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
+    private void RotateCharacter()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (horizontal > 0.01f)
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        else if (horizontal < -0.01f)
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+    }
+
+
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
@@ -177,7 +195,7 @@ public class Player : MonoBehaviour
     }
 
     private void animController() {
-      //anim.SetBool("isMoving", )
-      anim.SetFloat("Speed", rb.linearVelocity.x);
+        //anim.SetBool("isMoving", )
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
     }
 }

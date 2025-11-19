@@ -15,6 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mine.unity
     guid: 0fbaf1e4dee17b94ba809d1352e05290
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 92f93b32d29264e408f1fd3423c178c0, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 59835b97178f0784c8e9688327f78c50, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: f4c79caf49ad2e0cb89c62364b56fcdf, type: 2}

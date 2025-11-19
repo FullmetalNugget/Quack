@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
 
+    private bool isRunning;
+
     private Rigidbody rb;
     private bool isGrounded;
     private bool isSliding;
@@ -29,13 +32,40 @@ public class Player : MonoBehaviour
     private bool canDoubleJump;
 
     private Vector3 wishDir;
-    private bool isRunning;
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
+    
 
     [Header("Animations")]
     private AnimationClip idk;
+    
+    // Controls i guess
+    PlayerControls controls;
+    Vector2 moveInput;
+
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+
+        // Movement
+        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled  += ctx => moveInput = Vector2.zero;
+
+        // Sprint
+        controls.Player.Sprint.performed += ctx => isRunning = true;
+        controls.Player.Sprint.canceled  += ctx => isRunning = false;
+
+        // Dash
+        controls.Player.Dash.performed += ctx => slidePressed = true;
+
+        //Jump
+        controls.Player.Jump.performed += ctx => jumpPressed = true;
+    }
+
+    void OnEnable()  => controls.Enable();
+    void OnDisable() => controls.Disable();
 
 
     private void Start()
@@ -51,17 +81,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // Capture input
-        wishDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0);
-        isRunning = Input.GetKey(KeyCode.LeftShift);
-
-        if (Input.GetButtonDown("Jump"))
-            jumpPressed = true;
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            slidePressed = true;
-
+        wishDir = new Vector3(moveInput.x, 0, moveInput.y);
         animController();
-        RotateCharacter();
+        RotateCharacter(moveInput.x);
     }
 
     private void FixedUpdate()
@@ -174,10 +196,8 @@ public class Player : MonoBehaviour
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    private void RotateCharacter()
+    private void RotateCharacter(float horizontal)
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-
         if (horizontal > 0.01f)
             transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         else if (horizontal < -0.01f)

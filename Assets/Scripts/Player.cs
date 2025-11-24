@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using LevelPlay;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
+
     [Header("Movement")]
     public float walkSpeed = 10f;
     public float runSpeed = 25f;
@@ -35,6 +37,14 @@ public class Player : MonoBehaviour
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
+    public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
+    public string gameId = "5988341";
+
+    #if UNITY_IOS
+      public string gameId = "5988340";
+      string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
+    #endif
+
     
 
     [Header("Animations")]
@@ -62,13 +72,14 @@ public class Player : MonoBehaviour
 
         //Jump
         controls.Player.Jump.performed += ctx => jumpPressed = true;
+
     }
 
     void OnEnable()  => controls.Enable();
     void OnDisable() => controls.Disable();
 
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotationX |

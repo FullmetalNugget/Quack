@@ -1,0 +1,41 @@
+Boss Concept
+
+Tall, black shadowy creature.
+
+6 arms total; 4 are active and float toward the player to attack.
+
+Stage 1
+
+Boss is mostly still.
+
+Hands attack the player.
+
+Stage 2
+
+Hands attack the player.
+
+Boss jumps toward the player’s last known location.
+
+Player manipulates boss movement by positioning.
+
+Stage 3 (Final Stage)
+
+Boss starts flying.
+
+Hands attack continues.
+
+Falling boulders drop from the ceiling.
+
+Spikes also fall from the boss (or arena) from any direction.
+
+Absolute radiance vibe: visually epic and intense.
+
+Spikes are fast but reactable—challenging without being unfair.
+
+Mechanics / Tricks
+
+Player can’t rely on their gun; must use environment (boulders) to deal damage.
+
+Boss movement and attacks are designed so players must predict and manipulate positioning.
+
+Stage 3 is chaotic but skill-based, inspired by Absrad’s spike mechanics.

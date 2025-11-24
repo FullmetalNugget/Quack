@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
 
+
     private bool isRunning;
 
     private Rigidbody rb;

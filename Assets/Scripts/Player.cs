@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using LevelPlay;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour

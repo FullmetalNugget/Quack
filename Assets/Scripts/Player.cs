@@ -38,22 +38,17 @@ public class Player : MonoBehaviour
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
+
     public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
     public string gameId = "5988341";
 
-    #if UNITY_IOS
-      public string gameId = "5988340";
-      string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
-    #endif
+#if UNITY_IOS
+    public string gameId = "5988340";
+    public string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
+#endif
 
-    
-
-    [Header("Animations")]
-    private AnimationClip idk;
-    
-    // Controls i guess
-    PlayerControls controls;
-    Vector2 moveInput;
+    private PlayerControls controls;
+    private Vector2 moveInput;
 
 
     void Awake()
@@ -153,7 +148,7 @@ public class Player : MonoBehaviour
     {
         isSliding = true;
         slideTimer = curTime;
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
+        rb.velocity = new Vector3(rb.velocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
     }
 
     private void GroundAccelerate(ref Vector3 velocity, Vector3 wishDir, float wishSpeed, float accelerate)
@@ -228,9 +223,9 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        Vector3 velocity = rb.linearVelocity;
+        Vector3 velocity = rb.velocity;
         velocity.y = jumpForce;
-        rb.linearVelocity = velocity;
+        rb.velocity = velocity;
     }
 
     private bool CheckGrounded()
@@ -256,8 +251,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void animController() {
-        //anim.SetBool("isMoving", )
-        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
+    private void UpdateAnimator()
+    {
+        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x), 0.1f, Time.deltaTime);
     }
 }

@@ -5,6 +5,6 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    public int maxStack = 99;
+    public byte maxStack = 99;
 }
 

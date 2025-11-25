@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionZ;
-        anim = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
+        animController = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
     }
 
     private void Update()
@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
             if (slidePressed && curTime - slideTimer > slideCooldown)
             {
                 StartSlide(curTime);
-                anim.Play("Slide");
+                animController.Play("Slide");
             }
         }
         else if (curTime - slideTimer > slideDuration)
@@ -209,12 +209,12 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             Jump();
-            anim.Play("Jump");
+            animController.Play("Jump");
         }
         else if (canDoubleJump)
         {
             Jump();
-            anim.Play("Jump");
+            animController.Play("Jump");
             canDoubleJump = false;
         }
 

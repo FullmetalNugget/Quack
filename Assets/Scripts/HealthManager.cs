@@ -4,7 +4,7 @@ using TMPro; // Use TMPro if using TextMeshPro
 public class HealthManager : MonoBehaviour
 {
     public byte maxHealth = 100;
-    private byte maxDamage = 255-maxHealth;
+    private byte maxDamage;
     private byte currentHealth;
 
     public TMP_Text healthText; // Assign your UI Text here
@@ -13,6 +13,7 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHealthText();
+        maxDamage = 255-maxHealth;
     }
 
     // Call this function to take damage

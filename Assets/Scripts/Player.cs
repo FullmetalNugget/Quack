@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
 
+
     private bool isRunning;
 
     private Rigidbody rb;
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     private Vector3 wishDir;
     private bool jumpPressed;
     private bool slidePressed;
-    private Animator animController;
+    private Animator anim;
 
     public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
     public string gameId = "5988341";
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
     {
         // Capture input
         wishDir = new Vector3(moveInput.x, 0f, 0f);
-        UpdateAnimator();
+        animController();
         RotateCharacter(moveInput.x);
     }
 
@@ -103,7 +104,7 @@ public class Player : MonoBehaviour
 
         HandleSliding(curTime);
 
-        Vector3 velocity = rb.velocity;
+        Vector3 velocity = rb.linearVelocity;
         Vector3 moveDir = wishDir.sqrMagnitude > 0.001f ? wishDir.normalized : Vector3.zero;
         float targetSpeed = isRunning ? runSpeed : walkSpeed;
 
@@ -120,7 +121,7 @@ public class Player : MonoBehaviour
             AirAccelerate(ref velocity, moveDir, Mathf.Min(targetSpeed, maxAirSpeed), accelSpeed * airControl);
         }
 
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
 
         HandleJump();
     }
@@ -252,6 +253,6 @@ public class Player : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        animController.SetFloat("Speed", Mathf.Abs(rb.velocity.x), 0.1f, Time.deltaTime);
+        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x), 0.1f, Time.deltaTime);
     }
 }

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public float maxAirSpeed = 5f;
     public float friction = 2f;
     public float airControl = 0.2f;
+    public float stopSpeed = 2f;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -35,23 +36,19 @@ public class Player : MonoBehaviour
     private Vector3 wishDir;
     private bool jumpPressed;
     private bool slidePressed;
-    private Animator anim;
+    [SerializeField]
+    private Animator animController;
+
     public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
     public string gameId = "5988341";
 
-    #if UNITY_IOS
-      public string gameId = "5988340";
-      string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
-    #endif
+#if UNITY_IOS
+    public string gameId = "5988340";
+    public string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
+#endif
 
-    
-
-    [Header("Animations")]
-    private AnimationClip idk;
-    
-    // Controls i guess
-    PlayerControls controls;
-    Vector2 moveInput;
+    private PlayerControls controls;
+    private Vector2 moveInput;
 
 
     void Awake()
@@ -85,14 +82,14 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionZ;
-        anim = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
+        animController = ResolveAnimator();
     }
 
     private void Update()
     {
         // Capture input
-        wishDir = new Vector3(moveInput.x, 0, moveInput.y);
-        animController();
+        wishDir = new Vector3(moveInput.x, 0f, 0f);
+        UpdateAnimator();
         RotateCharacter(moveInput.x);
     }
 
@@ -107,17 +104,24 @@ public class Player : MonoBehaviour
 
         HandleSliding(curTime);
 
+        Vector3 velocity = rb.velocity;
+        Vector3 moveDir = wishDir.sqrMagnitude > 0.001f ? wishDir.normalized : Vector3.zero;
+        float targetSpeed = isRunning ? runSpeed : walkSpeed;
+
         if (isGrounded)
         {
             if (!isSliding)
-                ApplyFriction(rb, friction);
-
-            Accelerate(rb, wishDir, isRunning ? runSpeed : walkSpeed, accelSpeed);
+            {
+                ApplyFriction(ref velocity, friction, stopSpeed);
+                GroundAccelerate(ref velocity, moveDir, targetSpeed, accelSpeed);
+            }
         }
         else
         {
-            Accelerate(rb, wishDir, maxAirSpeed, accelSpeed * airControl);
+            AirAccelerate(ref velocity, moveDir, Mathf.Min(targetSpeed, maxAirSpeed), accelSpeed * airControl);
         }
+
+        rb.velocity = velocity;
 
         HandleJump();
     }
@@ -129,7 +133,10 @@ public class Player : MonoBehaviour
             if (slidePressed && curTime - slideTimer > slideCooldown)
             {
                 StartSlide(curTime);
-                anim.Play("Slide");
+
+                Animator animator = ResolveAnimator();
+                if (animator != null)
+                    animator.Play("Slide");
             }
         }
         else if (curTime - slideTimer > slideDuration)
@@ -144,15 +151,16 @@ public class Player : MonoBehaviour
     {
         isSliding = true;
         slideTimer = curTime;
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
+        rb.velocity = new Vector3(rb.velocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
     }
 
-    private void Accelerate(Rigidbody rb, Vector3 wishDir, float wishSpeed, float accelerate)
+    private void GroundAccelerate(ref Vector3 velocity, Vector3 wishDir, float wishSpeed, float accelerate)
     {
-        Vector3 velocity = rb.linearVelocity;
+        if (wishDir.sqrMagnitude < 0.0001f)
+            return;
 
         // Project current velocity along desired direction
-        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0, 0), wishDir);
+        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0f, 0f), wishDir);
         float addSpeed = Mathf.Max(wishSpeed - currentSpeed, 0);
 
         if (addSpeed <= 0)
@@ -160,19 +168,41 @@ public class Player : MonoBehaviour
 
         float accelThisFrame = Mathf.Min(accelerate * Time.fixedDeltaTime * wishSpeed, addSpeed);
         velocity += accelThisFrame * wishDir;
-
-        rb.linearVelocity = velocity;
     }
 
-    private void ApplyFriction(Rigidbody rb, float friction)
+    private void AirAccelerate(ref Vector3 velocity, Vector3 wishDir, float wishSpeed, float accelerate)
     {
-        Vector3 velocity = rb.linearVelocity;
-        float speed = velocity.magnitude;
+        if (wishDir.sqrMagnitude < 0.0001f)
+            return;
+
+        float currentSpeed = Vector3.Dot(new Vector3(velocity.x, 0f, 0f), wishDir);
+        float addSpeed = Mathf.Max(wishSpeed - currentSpeed, 0);
+
+        if (addSpeed <= 0)
+            return;
+
+        float accelThisFrame = accelerate * wishSpeed * Time.fixedDeltaTime;
+        accelThisFrame = Mathf.Min(accelThisFrame, addSpeed);
+        velocity += accelThisFrame * wishDir;
+    }
+
+    private void ApplyFriction(ref Vector3 velocity, float friction, float stopSpeed)
+    {
+        Vector3 planarVelocity = new Vector3(velocity.x, 0f, velocity.z);
+        float speed = planarVelocity.magnitude;
 
         if (speed < 0.001f) return;
 
-        float drop = speed * friction * Time.fixedDeltaTime;
-        rb.linearVelocity = velocity * Mathf.Max((speed - drop) / speed, 0f);
+        float control = Mathf.Max(speed, stopSpeed);
+        float drop = control * friction * Time.fixedDeltaTime;
+        float newSpeed = Mathf.Max(speed - drop, 0f);
+
+        if (newSpeed != speed)
+        {
+            float scale = newSpeed / speed;
+            velocity.x *= scale;
+            velocity.z *= scale;
+        }
     }
 
     private void HandleJump()
@@ -182,12 +212,16 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             Jump();
-            anim.Play("Jump");
+            Animator animator = ResolveAnimator();
+            if (animator != null)
+                animator.Play("Jump");
         }
         else if (canDoubleJump)
         {
             Jump();
-            anim.Play("Jump");
+            Animator animator = ResolveAnimator();
+            if (animator != null)
+                animator.Play("Jump");
             canDoubleJump = false;
         }
 
@@ -196,9 +230,9 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        Vector3 velocity = rb.linearVelocity;
+        Vector3 velocity = rb.velocity;
         velocity.y = jumpForce;
-        rb.linearVelocity = velocity;
+        rb.velocity = velocity;
     }
 
     private bool CheckGrounded()
@@ -224,8 +258,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void animController() {
-        //anim.SetBool("isMoving", )
-        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
+    private void UpdateAnimator()
+    {
+        Animator animator = ResolveAnimator();
+
+        if (animator != null)
+            animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x), 0.1f, Time.deltaTime);
+    }
+
+    private Animator ResolveAnimator()
+    {
+        if (animController == null)
+            animController = GetComponent<Animator>() ?? GetComponentInChildren<Animator>();
+
+        return animController;
     }
 }

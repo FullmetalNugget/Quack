@@ -2,146 +2,69 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    public enum BossStage { Stage1, Stage2, Stage3 }
-    public BossStage currentStage = BossStage.Stage1;
+    public Transform[] spikes;
+    public float checkInterval = 5f;
+    public float popHeight = 2f;
+    public float popSpeed = 5f;
+    public float chance = 0.4f;
 
-    [Header("Boss Settings")]
-    public float maxHealth = 100f;
-    public float health;
-
-    [Header("Jump Attack")]
-    public float jumpSpeedStage2 = 7f;
-    public float jumpSpeedStage3 = 10f;
-
-    [Header("Hands")]
-    public Transform[] hands;
-    public float handSpeedStage1 = 5f;
-    public float handSpeedStage2 = 7f;
-    public float handSpeedStage3 = 9f;
-    public float handCheckInterval = 1.5f;
-    public float handMoveChance = 0.5f;
-
-    [Header("Player")]
-    public Transform player;
-
-    private Vector3[] originalHandPositions;
-    private Vector3[] handTargetPositions;
-    private bool[] isHandMoving;
-    private float nextHandCheckTime;
+    private float timer;
+    private Vector3[] originalPos;
 
     void Start()
     {
-        health = maxHealth;
-
-        originalHandPositions = new Vector3[hands.Length];
-        handTargetPositions = new Vector3[hands.Length];
-        isHandMoving = new bool[hands.Length];
-
-        for (int i = 0; i < hands.Length; i++)
-        {
-            originalHandPositions[i] = hands[i].localPosition;
-            handTargetPositions[i] = hands[i].position;
-            isHandMoving[i] = false;
-        }
-
-        nextHandCheckTime = Time.time + handCheckInterval;
+        originalPos = new Vector3[spikes.Length];
+        for (int i = 0; i < spikes.Length; i++)
+            originalPos[i] = spikes[i].position;
     }
 
     void Update()
     {
-        if (player == null) return;
+        timer -= Time.deltaTime;
 
-        HandleHands();
-
-        StageBehavior();
-    }
-
-    void StageBehavior()
-    {
-        switch (currentStage)
+        if (timer <= 0)
         {
-            case BossStage.Stage1:
-                break;
-
-            case BossStage.Stage2:
-                JumpTowardsPlayer(jumpSpeedStage2);
-                break;
-
-            case BossStage.Stage3:
-                JumpTowardsPlayer(jumpSpeedStage3);
-                break;
+            TryPopSpikes();
+            timer = checkInterval;
         }
     }
 
-    void JumpTowardsPlayer(float speed)
+    void TryPopSpikes()
     {
-        Vector3 targetPos = new Vector3(player.position.x, player.position.y, transform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
-    }
-
-    void HandleHands()
-    {
-        float currentHandSpeed = handSpeedStage1;
-        if (currentStage == BossStage.Stage2) currentHandSpeed = handSpeedStage2;
-        if (currentStage == BossStage.Stage3) currentHandSpeed = handSpeedStage3;
-
-        if (Time.time >= nextHandCheckTime)
+        foreach (Transform spike in spikes)
         {
-            nextHandCheckTime = Time.time + handCheckInterval;
-
-            for (int i = 0; i < hands.Length; i++)
-            {
-                if (!isHandMoving[i] && Random.value < handMoveChance)
-                {
-                    handTargetPositions[i] = new Vector3(player.position.x, player.position.y, hands[i].position.z);
-                    isHandMoving[i] = true;
-                }
-            }
-        }
-
-        for (int i = 0; i < hands.Length; i++)
-        {
-            hands[i].position = Vector3.MoveTowards(hands[i].position, handTargetPositions[i], currentHandSpeed * Time.deltaTime);
-
-            if (isHandMoving[i] && Vector3.Distance(hands[i].position, handTargetPositions[i]) < 0.05f)
-            {
-                handTargetPositions[i] = transform.position + originalHandPositions[i];
-                isHandMoving[i] = false;
-            }
+            if (Random.value <= chance)
+                StartCoroutine(PopSpike(spike));
         }
     }
 
-    public void TakeDamage(float amount)
+    System.Collections.IEnumerator PopSpike(Transform spike)
     {
-        health -= amount;
+        Vector3 upPos = spike.position + Vector3.up * popHeight;
 
-        if (health <= 0f)
+        while (Vector3.Distance(spike.position, upPos) > 0.01f)
         {
-            Die();
-            return;
+            spike.position = Vector3.MoveTowards(
+                spike.position,
+                upPos,
+                popSpeed * Time.deltaTime
+            );
+            yield return null;
         }
 
-        if (health <= maxHealth - 30f && currentStage == BossStage.Stage1)
-        {
-            currentStage = BossStage.Stage2;
-        }
-        else if (health <= maxHealth - 60f && currentStage == BossStage.Stage2)
-        {
-            currentStage = BossStage.Stage3;
-        }
-    }
+        yield return new WaitForSeconds(0.5f);
 
-    void Die()
-    {
-        Debug.Log("Boss defeated!");
-        Destroy(gameObject);
-    }
+        int index = System.Array.IndexOf(spikes, spike);
+        Vector3 downPos = originalPos[index];
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Rock"))
+        while (Vector3.Distance(spike.position, downPos) > 0.01f)
         {
-            TakeDamage(10f);
+            spike.position = Vector3.MoveTowards(
+                spike.position,
+                downPos,
+                popSpeed * Time.deltaTime
+            );
+            yield return null;
         }
     }
 }

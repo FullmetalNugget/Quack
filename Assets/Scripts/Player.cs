@@ -38,17 +38,22 @@ public class Player : MonoBehaviour
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
-
     public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
     public string gameId = "5988341";
 
-#if UNITY_IOS
-    public string gameId = "5988340";
-    public string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
-#endif
+    #if UNITY_IOS
+      public string gameId = "5988340";
+      string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
+    #endif
 
-    private PlayerControls controls;
-    private Vector2 moveInput;
+    
+
+    [Header("Animations")]
+    private AnimationClip idk;
+    
+    // Controls i guess
+    PlayerControls controls;
+    Vector2 moveInput;
 
 
     void Awake()
@@ -82,7 +87,7 @@ public class Player : MonoBehaviour
                          RigidbodyConstraints.FreezeRotationY |
                          RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionZ;
-        animController = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
+        anim = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
     }
 
     private void Update()
@@ -133,7 +138,7 @@ public class Player : MonoBehaviour
             if (slidePressed && curTime - slideTimer > slideCooldown)
             {
                 StartSlide(curTime);
-                animController.Play("Slide");
+                anim.Play("Slide");
             }
         }
         else if (curTime - slideTimer > slideDuration)
@@ -148,7 +153,7 @@ public class Player : MonoBehaviour
     {
         isSliding = true;
         slideTimer = curTime;
-        rb.velocity = new Vector3(rb.velocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
     }
 
     private void GroundAccelerate(ref Vector3 velocity, Vector3 wishDir, float wishSpeed, float accelerate)
@@ -209,12 +214,12 @@ public class Player : MonoBehaviour
         if (isGrounded)
         {
             Jump();
-            animController.Play("Jump");
+            anim.Play("Jump");
         }
         else if (canDoubleJump)
         {
             Jump();
-            animController.Play("Jump");
+            anim.Play("Jump");
             canDoubleJump = false;
         }
 
@@ -223,9 +228,9 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        Vector3 velocity = rb.velocity;
+        Vector3 velocity = rb.linearVelocity;
         velocity.y = jumpForce;
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
     }
 
     private bool CheckGrounded()
@@ -251,8 +256,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateAnimator()
-    {
-        anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x), 0.1f, Time.deltaTime);
+    private void animController() {
+        //anim.SetBool("isMoving", )
+        anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
     }
 }

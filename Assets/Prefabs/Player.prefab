@@ -81,6 +81,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1c90a5e772be9149862918c68b5088f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8299416596920592052}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e1c90a5e772be9149862918c68b5088f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1448205370020262240}
   m_SourcePrefab: {fileID: 100100000, guid: e1c90a5e772be9149862918c68b5088f, type: 3}
 --- !u!1 &1447559666951909114 stripped
 GameObject:
@@ -159,12 +162,28 @@ MonoBehaviour:
   maxAirSpeed: 2
   friction: 1
   airControl: 2
-  flipStrength: -3
+  stopSpeed: 2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 2259983978581308480}
   groundCheckRadius: 1
+  adUnitId: Interstitial_Android
+  gameId: 5988341
+--- !u!114 &1448205370020262240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447559666951909114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56485d7d40a54a5a26afb1bb07f4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHealth: 100
+  healthText: {fileID: 0}
 --- !u!4 &2259983978581308480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e1c90a5e772be9149862918c68b5088f, type: 3}

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro; // Use TMPro if using TextMeshPro
+using UnityEngine.SceneManagement;
 
 public class HealthManager : MonoBehaviour
 {
@@ -22,7 +23,9 @@ public class HealthManager : MonoBehaviour
 
         if ((currentHealth <= 0 || currentHealth > maxHealth) && damage !> maxDamage)
             currentHealth = 0;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
 
         UpdateHealthText();
     }

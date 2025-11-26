@@ -8220,7 +8220,7 @@ MonoBehaviour:
   Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 1
-    Time: 1
+    Time: 0.5
     Smoothing: 30
     IgnoreY: 0
 --- !u!114 &1272604967

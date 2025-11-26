@@ -56919,6 +56919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4994433214735583987, guid: b75a823ad39f56f4c9a87f15a6208a43, type: 3}
+      propertyPath: Lookahead.Time
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7100222390632946220, guid: b75a823ad39f56f4c9a87f15a6208a43, type: 3}
       propertyPath: Target.TrackingTarget
       value: 

@@ -261,5 +261,4 @@ public class Player : MonoBehaviour
         //anim.SetBool("isMoving", );
         anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
     }
-  }
 }

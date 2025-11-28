@@ -256,13 +256,10 @@ public class Player : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    private void animController() {
-        //anim.SetBool("isMoving", )
-=======
-    private void UpdateAnimator()
+    private void animController()
     {
->>>>>>> Stashed changes
+        //anim.SetBool("isMoving", );
         anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x), 0.1f, Time.deltaTime);
     }
+  }
 }

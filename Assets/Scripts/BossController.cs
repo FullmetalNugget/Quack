@@ -47,6 +47,28 @@ public class BossController : MonoBehaviour
         currentHP = maxHP;
         rb = GetComponent<Rigidbody>();
 
+        GameObject[] spikes = GameObject.FindObjectsOfType<GameObject>();
+        var spikeList = new System.Collections.Generic.List<Transform>();
+        foreach (GameObject obj in spikes)
+        {
+            if (obj.name.Contains("Spike"))
+            {
+                spikeList.Add(obj.transform);
+            }
+        }
+        spikePositions = spikeList.ToArray();
+
+        GameObject[] handObjects = GameObject.FindObjectsOfType<GameObject>();
+        var handList = new System.Collections.Generic.List<Transform>();
+        foreach (GameObject obj in handObjects)
+        {
+            if (obj.name.Contains("Hand"))
+            {
+                handList.Add(obj.transform);
+            }
+        }
+        hands = handList.ToArray();
+
         handStartPositions = new Vector3[hands.Length];
         handIsAttacking = new bool[hands.Length];
         handTargetPositions = new Vector3[hands.Length];

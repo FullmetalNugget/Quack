@@ -3356,6 +3356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41f3d8696117c64e8834e5ab447e03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadScene
+  playerTag: Player
 --- !u!64 &499386865
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3755,6 +3756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 100
+  hitClip: {fileID: 8300000, guid: ac6c1a458ce0540e8bea4308cc551a8b, type: 3}
+  dieClip: {fileID: 8300000, guid: 02dabf67402b0c1b5950b38b4b6e89ff, type: 3}
   healthText: {fileID: 792508504}
 --- !u!1 &576597506
 GameObject:

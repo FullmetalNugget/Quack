@@ -27,9 +27,8 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     
     public AudioClip jumpClip;
-    public AudioClip dieClip;
     public AudioClip shootClip;
-    public AudioClip hitClip;
+    public AudioClip slideClip;
 
 
     private bool isRunning;
@@ -71,7 +70,7 @@ public class Player : MonoBehaviour
         controls.Player.Dash.performed += ctx => slidePressed = true;
 
         //Jump
-        controls.Player.Jump.performed += ctx => jumpPressed = true;
+        controls.Player.  Jump.performed += ctx => jumpPressed = true;
         sfx = GetComponent<playSFX>();
 
     }
@@ -154,6 +153,7 @@ public class Player : MonoBehaviour
         isSliding = true;
         slideTimer = curTime;
         rb.linearVelocity = new Vector3(rb.linearVelocity.x > 0 ? slideSpeed : -slideSpeed, 0f, 0f);
+        sfx?.Play(slideClip, 0.5f, 1, 1);
     }
 
     private void GroundAccelerate(ref Vector3 velocity, Vector3 wishDir, float wishSpeed, float accelerate)

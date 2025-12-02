@@ -393,8 +393,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48bdf10b7bab4c5439c01f1b7ba32fa0, type: 3}
   - {fileID: 8300000, guid: c26a201b7cd2668459cd173a183b3786, type: 3}
   - {fileID: 8300000, guid: 838e9ea92ef856540b306bc7c4b8ad04, type: 3}
-  delayBetweenClips: 1
-  objectToEnable: {fileID: 321389037}
+  delayBetweenClips: 2
+  objectToEnable: {fileID: 0}
 --- !u!1001 &816398142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1433,6 +1433,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 100
+  hitClip: {fileID: 0}
+  dieClip: {fileID: 0}
   healthText: {fileID: 1484911705}
 --- !u!4 &2001951202 stripped
 Transform:

@@ -2,10 +2,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Trap : MonoBehaviour
+
+
 {
+
+    public byte damage = 50;
+    public float attackCooldown = 2.0f;
+    private float lastAttackTime;
+
+    private Transform player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+      player = GameObject.FindWithTag("Player").transform;
         
     }
 
@@ -19,7 +28,17 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+          TryAttack();
+
+        }
+    }
+    void TryAttack()
+    {
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            player.GetComponent<HealthManager>()?.TakeDamage(damage);
+
+            lastAttackTime = Time.time;
         }
     }
 }

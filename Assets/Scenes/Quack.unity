@@ -12475,6 +12475,10 @@ PrefabInstance:
       propertyPath: shootClip
       value: 
       objectReference: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}
+    - target: {fileID: 8299416596920592052, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+      propertyPath: slideClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d46c5de8d2d4da508ad87c9da3f15279, type: 3}
     - target: {fileID: 8895810737968653668, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
       propertyPath: audioSource
       value: 

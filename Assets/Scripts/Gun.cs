@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
                 var enemy = hit.collider.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(damage);
+                    enemy.enemyTakeDamage(damage);
                     return;
                 }
 

@@ -24,6 +24,12 @@ public class Player : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
+    [Header("SFX")]
+    
+    public AudioClip jumpClip;
+    public AudioClip dieClip;
+    public AudioClip shootClip;
+    public AudioClip hitClip;
 
 
     private bool isRunning;
@@ -38,6 +44,8 @@ public class Player : MonoBehaviour
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
+
+    private playSFX sfx;
 
     [Header("Animations")]
     private AnimationClip idk;
@@ -64,6 +72,7 @@ public class Player : MonoBehaviour
 
         //Jump
         controls.Player.Jump.performed += ctx => jumpPressed = true;
+        sfx = GetComponent<playSFX>();
 
     }
 
@@ -215,6 +224,8 @@ public class Player : MonoBehaviour
         }
 
         jumpPressed = false;
+
+
     }
 
     private void Jump()
@@ -222,6 +233,9 @@ public class Player : MonoBehaviour
         Vector3 velocity = rb.linearVelocity;
         velocity.y = jumpForce;
         rb.linearVelocity = velocity;
+
+
+        sfx?.Play(jumpClip, 1, 1, 1);
     }
 
     private bool CheckGrounded()

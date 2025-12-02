@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void enemyTakeDamage(int amount)
     {
         currentHealth -= amount;
         if (currentHealth <= 0)

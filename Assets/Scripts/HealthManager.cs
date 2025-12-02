@@ -21,7 +21,7 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if ((currentHealth <= 0 || currentHealth > maxHealth) && damage > maxDamage)
+        if ((currentHealth <= 0 || currentHealth > maxHealth) && damage < maxDamage)
             currentHealth = 0;
             //gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

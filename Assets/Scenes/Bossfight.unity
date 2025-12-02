@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 985307133927403723, guid: e0452490a1c24514db634e3eb401b251, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -480
+      value: 326.57
       objectReference: {fileID: 0}
     - target: {fileID: 985307133927403723, guid: e0452490a1c24514db634e3eb401b251, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3111,7 +3111,6 @@ GameObject:
   m_Component:
   - component: {fileID: 293041650}
   - component: {fileID: 293041649}
-  - component: {fileID: 293041648}
   - component: {fileID: 293041651}
   - component: {fileID: 293041652}
   m_Layer: 0
@@ -3121,14 +3120,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &293041648
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293041647}
-  m_Enabled: 1
 --- !u!20 &293041649
 Camera:
   m_ObjectHideFlags: 0
@@ -4774,7 +4765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &491550265
 Transform:
   m_ObjectHideFlags: 0
@@ -5470,7 +5461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d6ab7a21119885845842294a4ca47e7a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d6ab7a21119885845842294a4ca47e7a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5651,7 +5642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332b05b352df0554b897594a07113a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
-  maxHP: 1000
+  maxHP: 10
   currentHP: 1000
   bossStage: 1
   stageThresholds: 4d0100009a020000
@@ -10776,7 +10767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d78f561da1321a479485eed28143f4b, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10788,6 +10779,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d78f561da1321a479485eed28143f4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1308023509}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d78f561da1321a479485eed28143f4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1308023510}
   m_SourcePrefab: {fileID: 100100000, guid: 6d78f561da1321a479485eed28143f4b, type: 3}
 --- !u!1 &1308023503 stripped
 GameObject:
@@ -10842,6 +10836,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008894386, y: 0.04655598, z: 0.014701143}
   m_Center: {x: 0, y: 0.0046860063, z: -0.002649428}
+--- !u!114 &1308023510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308023503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a60c8e019b06546a9f8f33a9f4a15b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  speed: 2
+  maxHealth: 100
 --- !u!1 &1316806906 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6512510688612296998, guid: d6ab7a21119885845842294a4ca47e7a, type: 3}
@@ -14009,6 +14017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8149c5e3d1d627747b70034be660b524, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15211,7 +15223,7 @@ Transform:
   m_GameObject: {fileID: 1892444622}
   serializedVersion: 2
   m_LocalRotation: {x: -0.034935903, y: -2.4601354e-15, z: -8.599953e-17, w: 0.9993896}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 816.57, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15558,7 +15570,7 @@ Transform:
   m_GameObject: {fileID: 1929182996}
   serializedVersion: 2
   m_LocalRotation: {x: -0.034935895, y: -2.4588776e-15, z: -5.003301e-17, w: 0.9993896}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 816.57, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

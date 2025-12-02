@@ -24,21 +24,11 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        RotateTowardsMouse();
-
         if (attackAction.WasPressedThisFrame() && Time.time - lastShotTime >= fireRate)
         {
             Shoot();
             lastShotTime = Time.time;
         }
-    }
-
-    void RotateTowardsMouse()
-    {
-        Vector3 mousePos = GetMouseWorldPosition();
-        Vector3 direction = (mousePos - transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(-90f, 0f, angle);
     }
 
     Vector3 GetMouseWorldPosition()
@@ -68,10 +58,21 @@ public class Gun : MonoBehaviour
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, range))
         {
-            Enemy enemy = hit.collider.GetComponent<Enemy>();
-            if (enemy != null)
+            if (hit.collider.CompareTag("Enemy"))
             {
-                enemy.TakeDamage(damage);
+                var enemy = hit.collider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                    return;
+                }
+
+                var boss = hit.collider.GetComponent<BossController>();
+                if (boss != null)
+                {
+                    boss.TakeDamage(damage);
+                    return;
+                }
             }
         }
 

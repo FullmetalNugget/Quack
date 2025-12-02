@@ -483,6 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &79341733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -747,6 +749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &133078215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1012,6 +1016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &176967826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1320,6 +1326,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &224366307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1614,6 +1622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &268475593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1674,6 +1684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &278561692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1890,6 +1902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &312147596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1950,6 +1964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &337010270
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2388,6 +2404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &391248424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2682,6 +2700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &425467125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3072,6 +3092,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &469196502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3210,6 +3232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &499286079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3592,6 +3616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &547720428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3617,6 +3643,11 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
   m_PrefabInstance: {fileID: 813122436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &553999587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+  m_PrefabInstance: {fileID: 572530764}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &572530764
 PrefabInstance:
@@ -3670,16 +3701,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: dieClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02dabf67402b0c1b5950b38b4b6e89ff, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: hitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ac6c1a458ce0540e8bea4308cc551a8b, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4834c62ef42279a2b8c07ff0c473a4db, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 572530770}
+    - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 572530771}
   m_SourcePrefab: {fileID: 100100000, guid: e0452490a1c24514db634e3eb401b251, type: 3}
 --- !u!4 &572530765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 985307133927403723, guid: e0452490a1c24514db634e3eb401b251, type: 3}
   m_PrefabInstance: {fileID: 572530764}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &572530770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553999587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4492429a4052ad2ac9f493fbf590f12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playSFX
+  audioSource: {fileID: 1025687729}
+--- !u!114 &572530771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553999587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56485d7d40a54a5a26afb1bb07f4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHealth: 100
+  healthText: {fileID: 792508504}
 --- !u!1 &576597506
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,6 +3916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &581668084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3978,6 +4056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &582690470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4164,6 +4244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &597196893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4376,6 +4458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &609492038
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4436,6 +4520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &620038240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4553,6 +4639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &632786901
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4865,6 +4953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &668769600
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4982,6 +5072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &676735403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5168,6 +5260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &685431228
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5814,6 +5908,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 597822863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792508504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8642023780882960248, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 1017407311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &802786072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5974,6 +6079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &805872924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6238,6 +6345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &928990954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6298,6 +6407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &929855597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6436,6 +6547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &973244938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6496,6 +6609,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &987654365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6522,6 +6637,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
   m_PrefabInstance: {fileID: 1562844188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1017407311
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 338128023036713608, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_Name
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301963522765915011, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
 --- !u!1 &1023273977
 GameObject:
   m_ObjectHideFlags: 0
@@ -6811,6 +7023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1033760225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6871,6 +7085,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1040520702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7183,6 +7399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1074982004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7447,6 +7665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1085082591
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8011,6 +8231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1269139355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8149,6 +8371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1269522726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8412,6 +8636,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1284536571
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8472,6 +8698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1310919450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8844,6 +9072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1346894569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8982,6 +9212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1384885615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9528,6 +9760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1465571068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9666,6 +9900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1493548077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9804,6 +10040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1514984894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9864,6 +10102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1528678533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9924,6 +10164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1541005735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10110,6 +10352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1546997631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10248,6 +10492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1562218026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10386,6 +10632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1568990691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11184,6 +11432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1658765990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11448,6 +11698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1700534330
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11664,6 +11916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1751519046
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11724,6 +11978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1773629917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12435,6 +12691,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1916421657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12699,6 +12957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &1959572392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13467,6 +13727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &2055158452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13527,6 +13789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &2070627440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13665,6 +13929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &2090242074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13803,6 +14069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
+  damage: 50
+  attackCooldown: 2
 --- !u!65 &2117722879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14204,3 +14472,4 @@ SceneRoots:
   - {fileID: 1827661595}
   - {fileID: 630294066}
   - {fileID: 1025687730}
+  - {fileID: 1017407311}

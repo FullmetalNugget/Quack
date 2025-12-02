@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UI.unity
     guid: 03d89a91a9199d15385239d76b838cbe
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: dce31e3dd059fec4cb7b143b10cf2fc9
+  - enabled: 1
     path: Assets/Scenes/Quack.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1

@@ -17,19 +17,21 @@ public class HealthManager : MonoBehaviour
     }
 
     // Call this function to take damage
-    public void TakeDamage(byte damage)
+   public void TakeDamage(byte damage)
+  {
+    if (damage >= maxDamage)
+        return;
+
+    int result = currentHealth - damage;
+    currentHealth = (byte)Mathf.Max(result, 0);
+
+    if (currentHealth == 0)
     {
-        currentHealth -= damage;
-
-        if ((currentHealth <= 0 || currentHealth > maxHealth) && damage < maxDamage)
-            currentHealth = 0;
-            //gameObject.SetActive(false);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            
-
-        UpdateHealthText();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    UpdateHealthText();
+  }
     // Updates the UI text
     private void UpdateHealthText()
     {

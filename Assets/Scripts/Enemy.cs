@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
-    public int damage = 10;
+    public byte damage = 10;
 
     private float lastAttackTime;
     private Animator animator;
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
             if (animator != null)
                 animator.SetTrigger("Attack");
 
-            //player.GetComponent<PlayerHealth>()?.TakeDamage(damage);
+            player.GetComponent<HealthManager>()?.TakeDamage(damage);
 
             lastAttackTime = Time.time;
         }

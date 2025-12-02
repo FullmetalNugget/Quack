@@ -16,6 +16,6 @@ public class LoadScene : MonoBehaviour
     public void LoadNewScene()
     {
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextSceneIndex);
+        SceneManager.LoadSceneAsync(nextSceneIndex);
     }
 }

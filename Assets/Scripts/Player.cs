@@ -27,9 +27,7 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     
     public AudioClip jumpClip;
-    public AudioClip dieClip;
     public AudioClip shootClip;
-    public AudioClip hitClip;
 
 
     private bool isRunning;
@@ -71,7 +69,7 @@ public class Player : MonoBehaviour
         controls.Player.Dash.performed += ctx => slidePressed = true;
 
         //Jump
-        controls.Player.Jump.performed += ctx => jumpPressed = true;
+        controls.Player.  Jump.performed += ctx => jumpPressed = true;
         sfx = GetComponent<playSFX>();
 
     }

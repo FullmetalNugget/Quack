@@ -38,15 +38,6 @@ public class Player : MonoBehaviour
     private bool jumpPressed;
     private bool slidePressed;
     private Animator anim;
-    public string adUnitId = "Interstitial_Android"; // from Unity Dashboard
-    public string gameId = "5988341";
-
-    #if UNITY_IOS
-      public string gameId = "5988340";
-      string adUnitId = "Interstitial_IOS"; // from Unity Dashboard
-    #endif
-
-    
 
     [Header("Animations")]
     private AnimationClip idk;

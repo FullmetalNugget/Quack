@@ -40,9 +40,9 @@ public class SpiderBoss : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int amount)
     {
-        currentHP -= damage;
+        currentHP -= amount;
         if (currentHP <= 0)
         {
             Die();

@@ -61,7 +61,7 @@ public class HealthManager : MonoBehaviour
     private void Die()
     {
       currentHealth = 0;
-      StartCoroutine(DieRoutine());      
+      StartCoroutine(DieRoutine());
     }
     // Updates the UI text
     private void UpdateHealthText()

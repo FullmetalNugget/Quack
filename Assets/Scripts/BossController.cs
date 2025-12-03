@@ -42,6 +42,10 @@ public class BossController : MonoBehaviour
 
     private float spikeTimer;
 
+    [Header("After Boss")]
+    public GameObject Hatch;
+    public AudioSource Defeat;
+
     void Start()
     {
         currentHP = maxHP;
@@ -241,6 +245,8 @@ public class BossController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Boss defeated!");
+        Destroy(gameObject);
+        Hatch.SetActive(true);
+        Defeat.Play();
     }
 }

@@ -25124,6 +25124,19 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &864725819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488295213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4492429a4052ad2ac9f493fbf590f12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playSFX
+  audioSource: {fileID: 1013763152}
 --- !u!1 &866488006 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c10a6ce2c5abd7b4f9df7c6dacea6463, type: 3}
@@ -58257,6 +58270,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
       insertIndex: -1
       addedObject: {fileID: 864725814}
+    - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 864725819}
   m_SourcePrefab: {fileID: 100100000, guid: e0452490a1c24514db634e3eb401b251, type: 3}
 --- !u!1001 &731319019972653770
 PrefabInstance:

@@ -6783,6 +6783,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+--- !u!114 &237062218 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6719030897985098872, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 237062217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &237062219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6846744616693187778, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 237062217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &238326634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25052,9 +25074,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 100
-  hitClip: {fileID: 0}
-  dieClip: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 75cc63f8746c2114b905963596a1975d, type: 3}
+  dieClip: {fileID: 8300000, guid: 9c50b99fbf3017b43b55c3b8ef71b971, type: 3}
   healthText: {fileID: 529184537}
+  killsText: {fileID: 237062219}
+  deathsText: {fileID: 237062218}
 --- !u!114 &864725813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58208,6 +58232,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e95f184623823354bac6f0a90902f5bc, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: slideClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d46c5de8d2d4da508ad87c9da3f15279, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

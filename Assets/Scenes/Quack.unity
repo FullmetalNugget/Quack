@@ -4344,6 +4344,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+--- !u!114 &753951252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6719030897985098872, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 753951251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &753951253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6846744616693187778, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 753951251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &756468545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12331,6 +12353,14 @@ PrefabInstance:
       propertyPath: hitClip
       value: 
       objectReference: {fileID: 8300000, guid: 75cc63f8746c2114b905963596a1975d, type: 3}
+    - target: {fileID: 1448205370020262240, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+      propertyPath: killsText
+      value: 
+      objectReference: {fileID: 753951253}
+    - target: {fileID: 1448205370020262240, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+      propertyPath: deathsText
+      value: 
+      objectReference: {fileID: 753951252}
     - target: {fileID: 1448205370020262240, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
       propertyPath: healthText
       value: 

@@ -40,6 +40,8 @@
 # Why
 .vsconfig/
 
+/webgl_sharing/
+
 # Gradle cache directory
 .gradle/
 

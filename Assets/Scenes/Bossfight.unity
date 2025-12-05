@@ -1404,6 +1404,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
       insertIndex: -1
       addedObject: {fileID: 752197558}
+    - targetCorrespondingSourceObject: {fileID: 497457760927410801, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 752197559}
   m_SourcePrefab: {fileID: 100100000, guid: e0452490a1c24514db634e3eb401b251, type: 3}
 --- !u!4 &74124334 stripped
 Transform:
@@ -7290,6 +7293,19 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &752197559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752197551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4492429a4052ad2ac9f493fbf590f12d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playSFX
+  audioSource: {fileID: 2056773378}
 --- !u!1 &781821567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d5936b84a9db5c14a830403c329f8d31, type: 3}

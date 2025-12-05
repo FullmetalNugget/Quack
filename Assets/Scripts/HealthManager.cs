@@ -3,6 +3,11 @@ using TMPro; // Use TMPro if using TextMeshPro
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+public static class GameStats {
+    public static ushort kills = 0;
+    public static ushort deaths = 0;
+}
+
 
 public class HealthManager : MonoBehaviour
 {
@@ -15,6 +20,9 @@ public class HealthManager : MonoBehaviour
     public AudioClip dieClip;
 
     public TMP_Text healthText; // Assign your UI Text here
+    public TMP_Text killsText;
+    public TMP_Text deathsText;
+
     private playSFX sfx;
 
     private void Start()
@@ -24,6 +32,8 @@ public class HealthManager : MonoBehaviour
     }
     private void Awake() {
       sfx = GetComponent<playSFX>();
+      killsText.text = GameStats.kills.ToString();
+      updateDeathText(GameStats.deaths);
     }
 
     public void TakeDamage(byte damage)
@@ -48,6 +58,10 @@ public class HealthManager : MonoBehaviour
 
       UpdateHealthText();
     }
+
+    public void updateDeathText(ushort deaths) {
+      deathsText.text = $"{GameStats.deaths.ToString()} X";
+    }
     private IEnumerator DieRoutine()
     {
         sfx?.Play(dieClip, 1, 1, 1);
@@ -60,7 +74,8 @@ public class HealthManager : MonoBehaviour
 
     private void Die()
     {
-      currentHealth = 0;
+      GameStats.deaths++;
+      updateDeathText(GameStats.deaths);
       StartCoroutine(DieRoutine());
     }
     // Updates the UI text
@@ -68,5 +83,11 @@ public class HealthManager : MonoBehaviour
     {
         healthText.text = currentHealth.ToString();
     }
+
+    public void getKill() {
+      GameStats.kills++;
+      killsText.text = GameStats.kills.ToString();
+    }
+
 }
 

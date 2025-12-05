@@ -4313,6 +4313,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: jumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e95f184623823354bac6f0a90902f5bc, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}
+    - target: {fileID: 1054509191137324884, guid: e0452490a1c24514db634e3eb401b251, type: 3}
+      propertyPath: slideClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d46c5de8d2d4da508ad87c9da3f15279, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9181,9 +9193,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 100
-  hitClip: {fileID: 0}
-  dieClip: {fileID: 0}
+  hitClip: {fileID: 8300000, guid: 75cc63f8746c2114b905963596a1975d, type: 3}
+  dieClip: {fileID: 8300000, guid: 9c50b99fbf3017b43b55c3b8ef71b971, type: 3}
   healthText: {fileID: 788154143}
+  killsText: {fileID: 1513392334}
+  deathsText: {fileID: 2032389790}
 --- !u!114 &1237496249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11120,8 +11134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd55c15b9708744283edbff767079d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trap
-  damage: 50
-  attackCooldown: 0.5
+  damage: 120
+  attackCooldown: 0
 --- !u!1 &1418200418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4664628938180820564, guid: 6ba36503999002f46b687b5ecac2f6b1, type: 3}
@@ -11693,6 +11707,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 668769602}
   m_SourcePrefab: {fileID: 100100000, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
+--- !u!114 &1513392334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6846744616693187778, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 1600198965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1514984891 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
@@ -15805,6 +15830,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 597822863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032389790 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6719030897985098872, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 1600198965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2045624667
 GameObject:
   m_ObjectHideFlags: 0

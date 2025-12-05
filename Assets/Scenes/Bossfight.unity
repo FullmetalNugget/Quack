@@ -6200,10 +6200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332b05b352df0554b897594a07113a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
-  maxHP: 1000
+  maxHP: 750
   currentHP: 1000
   bossStage: 1
-  stageThresholds: 4d0100009a020000
+  stageThresholds: 9a0200004d010000
   stageIntervalMultiplier: 0.8
   stageChanceIncrement: 0.1
   spikePositions: []

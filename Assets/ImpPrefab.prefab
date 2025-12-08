@@ -78,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4604553776373909069}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3161489688932987681}
   m_SourcePrefab: {fileID: 100100000, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
 --- !u!1 &5251426560250350917 stripped
 GameObject:
@@ -117,8 +120,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a60c8e019b06546a9f8f33a9f4a15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  speed: 3
+  speed: 4
   maxHealth: 30
   attackRange: 2
   attackCooldown: 1.5
   damage: 20
+--- !u!114 &3161489688932987681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251426560250350917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba932e570909c04e8bce12ba870847d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RageTrigger
+  player: {fileID: 0}
+  checkInterval: 10
+  triggerRange: 0
+  moveChance: 0
+  moveSpeed: 0

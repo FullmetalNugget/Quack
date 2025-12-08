@@ -3823,6 +3823,8 @@ MonoBehaviour:
   fireRate: 0.2
   range: 50
   damage: 10
+  shot: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}
+  audioSource: {fileID: 942181585}
 --- !u!114 &976767558
 MonoBehaviour:
   m_ObjectHideFlags: 0

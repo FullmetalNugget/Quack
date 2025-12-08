@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
@@ -14,6 +15,9 @@ public class Gun : MonoBehaviour
     private InputAction attackAction;
     private InputAction mousePositionAction;
 
+    public AudioClip shot;
+    public AudioSource audioSource;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -27,6 +31,7 @@ public class Gun : MonoBehaviour
         if (attackAction.WasPressedThisFrame() && Time.time - lastShotTime >= fireRate)
         {
             Shoot();
+            audioSource.PlayOneShot(shot);
             lastShotTime = Time.time;
         }
     }

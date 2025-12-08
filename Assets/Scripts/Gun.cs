@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public int damage = 10;
 
     private float lastShotTime;
+    private Vector3 lastAimDirection = Vector3.right;
 
     private PlayerInput playerInput;
     private InputAction attackAction;
@@ -33,28 +34,64 @@ public class Gun : MonoBehaviour
 
     Vector3 GetMouseWorldPosition()
     {
-        if (Mouse.current == null)
+        Vector3 worldPos;
+
+        if (!TryGetPointerWorldPosition(out worldPos))
             return Vector3.zero;
 
-        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-        Ray ray = Camera.main.ScreenPointToRay(mouseScreenPos);
+        return worldPos;
+    }
+
+    bool TryGetPointerWorldPosition(out Vector3 worldPos)
+    {
+        Vector2 pointerScreenPos;
+
+        if (Mouse.current != null)
+        {
+            pointerScreenPos = Mouse.current.position.ReadValue();
+        }
+        else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            pointerScreenPos = Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        else
+        {
+            worldPos = Vector3.zero;
+            return false;
+        }
+
+        Ray ray = Camera.main.ScreenPointToRay(pointerScreenPos);
 
         Plane xyPlane = new Plane(Vector3.forward, Vector3.zero);
 
         if (xyPlane.Raycast(ray, out float distance))
         {
-            Vector3 worldPos = ray.GetPoint(distance);
+            worldPos = ray.GetPoint(distance);
             worldPos.z = -6.1f;
-            return worldPos;
+            return true;
         }
 
-        return Vector3.zero;
+        worldPos = Vector3.zero;
+        return false;
     }
 
     void Shoot()
     {
         Vector3 mousePos = GetMouseWorldPosition();
-        Vector3 direction = (mousePos - transform.position).normalized;
+        Vector3 direction;
+
+        if (mousePos != Vector3.zero)
+        {
+            direction = (mousePos - transform.position).normalized;
+            lastAimDirection = direction;
+        }
+        else
+        {
+            direction = lastAimDirection;
+        }
+
+        if (direction == Vector3.zero)
+            return;
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, range))
         {

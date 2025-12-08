@@ -1,13 +1,13 @@
 using UnityEngine;
-using TMPro; // Use TMPro if using TextMeshPro
+using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
 public static class GameStats {
     public static ushort kills = 0;
     public static ushort deaths = 0;
+    public static ushort points = 0;
 }
-
 
 public class HealthManager : MonoBehaviour
 {
@@ -19,75 +19,91 @@ public class HealthManager : MonoBehaviour
     public AudioClip hitClip;
     public AudioClip dieClip;
 
-    public TMP_Text healthText; // Assign your UI Text here
+    public TMP_Text healthText;
     public TMP_Text killsText;
     public TMP_Text deathsText;
+    public TMP_Text pointsText;
+
+    public ushort curPoints = 0;
 
     private playSFX sfx;
 
     private void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthText();
+
+        UpdateText(healthText, currentHealth);
+        UpdateText(pointsText, GameStats.points);
+        UpdateText(killsText, GameStats.kills);
+        UpdateDeathText();
     }
-    private void Awake() {
-      sfx = GetComponent<playSFX>();
-      killsText.text = GameStats.kills.ToString();
-      updateDeathText(GameStats.deaths);
+
+    private void Awake()
+    {
+        sfx = GetComponent<playSFX>();
     }
 
     public void TakeDamage(byte damage)
     {
-      byte oldHealth = currentHealth;
-      currentHealth -= damage;
-      sfx?.Play(hitClip, 1, 1, 1);
+        byte oldHealth = currentHealth;
+        currentHealth -= damage;
 
-      // 1. Exact kill
-      if (currentHealth == 0)
-      {
-          Die();
-          return;
-      }
+        sfx?.Play(hitClip, 1, 1, 1);
 
-      // 2. Overflow kill (damage exceeded health OR damage of 255 caused wrap)
-      if (currentHealth > oldHealth || damage == maxDamage)
-      {
-          Die();
-          return;
-      }
+        if (currentHealth == 0)
+        {
+            Die();
+            return;
+        }
 
-      UpdateHealthText();
-    }
+        if (currentHealth > oldHealth || damage == maxDamage)
+        {
+            Die();
+            return;
+        }
 
-    public void updateDeathText(ushort deaths) {
-      deathsText.text = $"{GameStats.deaths.ToString()} X";
-    }
-    private IEnumerator DieRoutine()
-    {
-        sfx?.Play(dieClip, 1, 1, 1);
-
-        // wait until the clip finishes
-        yield return new WaitForSeconds(dieClip.length);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UpdateText(healthText, currentHealth);
     }
 
     private void Die()
     {
-      GameStats.deaths++;
-      updateDeathText(GameStats.deaths);
-      StartCoroutine(DieRoutine());
+        GameStats.deaths++;
+        UpdateDeathText();
+        StartCoroutine(DieRoutine());
     }
-    // Updates the UI text
-    private void UpdateHealthText()
+
+    private IEnumerator DieRoutine()
     {
-        healthText.text = currentHealth.ToString();
+        sfx?.Play(dieClip, 1, 1, 1);
+        curPoints = 0;
+        yield return new WaitForSeconds(dieClip.length);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void getKill() {
-      GameStats.kills++;
-      killsText.text = GameStats.kills.ToString();
+    // --- UI Updates ---
+
+    public void UpdateText(TMP_Text text, ushort value)
+    {
+        text.text = value.ToString();
     }
 
+    private void UpdateDeathText()
+    {
+        deathsText.text = GameStats.deaths + " X";
+    }
+
+    // --- Stats ---
+
+    public void getKill()
+    {
+        GameStats.kills++;
+        UpdateText(killsText, GameStats.kills);
+    }
+
+    public void AddPoints(ushort amount)
+    {
+        curPoints += amount;
+        UpdateText(pointsText, (ushort)(curPoints+GameStats.points));
+    }
 }
 

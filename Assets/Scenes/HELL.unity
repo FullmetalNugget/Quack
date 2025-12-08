@@ -3811,6 +3811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadScene
   playerTag: Player
+  hm: {fileID: 1237496244}
 --- !u!64 &499386865
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4126,7 +4127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d866fd73959f29f46b1545b374cdb694, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -72.6
+      value: -87.07
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d866fd73959f29f46b1545b374cdb694, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5357,6 +5358,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 630294068}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 630294069}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &630294067 stripped
 GameObject:
@@ -5384,6 +5388,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &630294069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630294067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 1237496244}
+  goldenBread: 0
 --- !u!1 &632786898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
@@ -5853,6 +5871,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 671071961}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 671071962}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &671071960 stripped
 GameObject:
@@ -5880,6 +5901,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &671071962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671071960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 1237496244}
+  goldenBread: 0
 --- !u!1 &676735400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 78abe9afc6aa82c4880e7eabf53f3208, type: 3}
@@ -9259,6 +9294,8 @@ MonoBehaviour:
   healthText: {fileID: 788154143}
   killsText: {fileID: 1513392334}
   deathsText: {fileID: 2032389790}
+  pointsText: {fileID: 1600198966}
+  curPoints: 0
 --- !u!114 &1237496249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11196,7 +11233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chase
   speed: 6
-  verticalAmplitude: 1
+  verticalAmplitude: 3
   verticalFrequency: 2
 --- !u!114 &1412090903
 MonoBehaviour:
@@ -12908,11 +12945,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6846744616693187778, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_margin.z
+      value: -38.726227
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+--- !u!114 &1600198966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7637811186788941183, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 1600198965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1620979996
 GameObject:
   m_ObjectHideFlags: 0
@@ -14413,6 +14465,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1827661597}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1827661598}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &1827661596 stripped
 GameObject:
@@ -14440,6 +14495,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1827661598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827661596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 1237496244}
+  goldenBread: 0
 --- !u!1001 &1829849165
 PrefabInstance:
   m_ObjectHideFlags: 0

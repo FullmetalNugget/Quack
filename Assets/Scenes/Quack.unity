@@ -754,6 +754,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 141109611}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 141109612}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &141109610 stripped
 GameObject:
@@ -781,6 +784,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &141109612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141109610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 3409478502441205195}
+  goldenBread: 0
 --- !u!1001 &152573790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6579,6 +6596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadScene
   playerTag: Player
+  hm: {fileID: 3409478502441205195}
 --- !u!1001 &1043542877
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7359,6 +7377,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1146553258}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1146553259}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &1146553257 stripped
 GameObject:
@@ -7386,6 +7407,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1146553259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146553257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 3409478502441205195}
+  goldenBread: 0
 --- !u!1001 &1158033277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8781,6 +8816,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1307923382}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 470612584f83a56449cb63267a7849ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1307923383}
   m_SourcePrefab: {fileID: 100100000, guid: 470612584f83a56449cb63267a7849ff, type: 3}
 --- !u!1 &1307923381 stripped
 GameObject:
@@ -8808,6 +8846,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1307923383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307923381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2049692efd3efc243877d8ca7b6b30ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BreadCollector
+  hm: {fileID: 3409478502441205195}
+  goldenBread: 0
 --- !u!4 &1310631063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4644645919557544016, guid: b231c847237ebb04d8a662d12a2b195e, type: 3}
@@ -13831,11 +13883,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6846744616693187778, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+      propertyPath: m_margin.z
+      value: -51.268646
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+--- !u!114 &2092501502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7637811186788941183, guid: ad932a03cc6c27afcb6f829a61ebabb2, type: 3}
+  m_PrefabInstance: {fileID: 2092501501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &2098682716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4251438697522046968, guid: c423593b66fb46a45a6e8ac679de8229, type: 3}
@@ -13974,6 +14041,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1418101011}
+    - target: {fileID: 1448205370020262240, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+      propertyPath: pointsText
+      value: 
+      objectReference: {fileID: 2092501502}
     - target: {fileID: 1835155055869184582, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
       propertyPath: m_Name
       value: Right_A
@@ -14136,6 +14207,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1774760777}
   m_SourcePrefab: {fileID: 100100000, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+--- !u!114 &3409478502441205195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1448205370020262240, guid: 85f3b151618bc9e4ba16fc84a165964f, type: 3}
+  m_PrefabInstance: {fileID: 3409478502441205194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573459575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56485d7d40a54a5a26afb1bb07f4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -955,7 +955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &152573795
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &366974299
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &377646720
@@ -5113,7 +5113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &731376537
@@ -7274,7 +7274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &1108059051
@@ -9301,7 +9301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &1370325178
@@ -10933,7 +10933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &1698028987
@@ -11980,7 +11980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 1
   maxHealth: 30
-  attackRange: 15
+  attackRange: 5
   attackCooldown: 2
   damage: 10
 --- !u!65 &1850649131

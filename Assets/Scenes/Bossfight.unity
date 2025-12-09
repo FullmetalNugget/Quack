@@ -327,8 +327,8 @@ Transform:
   m_GameObject: {fileID: 59036824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98.2591, y: 0, z: 0}
-  m_LocalScale: {x: 974.8, y: 6, z: 25}
+  m_LocalPosition: {x: 49.6409, y: 0, z: 0}
+  m_LocalScale: {x: 877.51495, y: 6, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298e8ae9b4ba7e0489547163e7eab586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  fireRate: 0.2
+  fireRate: 0
   range: 50
   damage: 10
   shot: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}
@@ -2157,8 +2157,8 @@ Transform:
   m_GameObject: {fileID: 963926006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98, y: 15.5178, z: 11.5987}
-  m_LocalScale: {x: 974.2537, y: 37.0356, z: 1.8025}
+  m_LocalPosition: {x: 49.4076, y: 15.5178, z: 11.5987}
+  m_LocalScale: {x: 877.0232, y: 37.0356, z: 1.8025}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

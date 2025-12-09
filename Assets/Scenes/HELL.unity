@@ -9308,7 +9308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298e8ae9b4ba7e0489547163e7eab586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  fireRate: 0.2
+  fireRate: 0
   range: 50
   damage: 10
   shot: {fileID: 8300000, guid: 86861fa0bede05d418806b2c4ecbc24d, type: 3}

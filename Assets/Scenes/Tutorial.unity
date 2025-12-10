@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 927a5c8a5fc36e843afdf2ecb9d37a2c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -637,9 +637,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Talking
   audioSource: {fileID: 1375991068}
   audioClips:
-  - {fileID: 8300000, guid: 67eb1eea7f821bf48b1f77321f4c9255, type: 3}
-  - {fileID: 8300000, guid: ba665847ebedf7c44a1152d7fa1c6655, type: 3}
-  delayBetweenClips: 1
+  - {fileID: 8300000, guid: 8e4147896401e6139bb85d68d8811a42, type: 3}
+  - {fileID: 8300000, guid: 2aa3df1aeebcb2d44869334e3bd66977, type: 3}
+  - {fileID: 8300000, guid: 5ab9a4c1a4457ed5c869747795d8e0b5, type: 3}
+  - {fileID: 8300000, guid: 3ad5402ab61f44346b24aa8bc9da59ce, type: 3}
+  - {fileID: 8300000, guid: 8fb42770ea086dff4a2fa6636397294d, type: 3}
+  delayBetweenClips: 0.5
   objectToEnable: {fileID: 321389037}
 --- !u!1001 &816398142
 PrefabInstance:

@@ -4358,7 +4358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Talking
   audioSource: {fileID: 942181585}
   audioClips:
-  - {fileID: 8300000, guid: 452b73d48bb2bb142bf8ca921f50e2be, type: 3}
+  - {fileID: 8300000, guid: 4077cbdf113eefa37b27694f44eb4ab5, type: 3}
   delayBetweenClips: 1
   objectToEnable: {fileID: 1733534844}
 --- !u!114 &1061805720
@@ -5914,7 +5914,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: e46d85b13a0649d4ba690c4cc2078cb5, type: 3}
+  m_Resource: {fileID: 8300000, guid: 366eeb54ea36598818fb5dfc16e6df1b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
